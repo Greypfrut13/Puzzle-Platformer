@@ -6,6 +6,7 @@ public class Hero : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _damageJumpForce;
 
     [SerializeField] private LayerCheck _groundCheck;
     
@@ -19,6 +20,7 @@ public class Hero : MonoBehaviour
     private static readonly int IsGroundedKey = Animator.StringToHash("IsGrounded");
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int VerticalVelocity = Animator.StringToHash("VerticalVelocity");
+    private static readonly int Hit = Animator.StringToHash("Hit");
 
     private void Awake() 
     {
@@ -96,5 +98,11 @@ public class Hero : MonoBehaviour
     public void SetDirection(Vector2 direction)
     {
         _direction = direction;
+    }
+
+    public void TakeDamage()
+    {
+        _animator.SetTrigger(Hit);
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpForce);
     }
 }
