@@ -9,7 +9,10 @@ public class Hero : MonoBehaviour
     [SerializeField] private float _damageJumpForce;
 
     [SerializeField] private LayerCheck _groundCheck;
+    [SerializeField] private float _interactionRadius;
+    [SerializeField] private LayerMask _interactionLayer;
     
+    private Collider2D[] _interactionResult = new Collider2D[1];
     private Vector2 _direction;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -104,5 +107,19 @@ public class Hero : MonoBehaviour
     {
         _animator.SetTrigger(Hit);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpForce);
+    }
+
+    public void Interact()
+    {
+        var size = Physics2D.OverlapCircleNonAlloc(transform.position, _interactionRadius, _interactionResult, _interactionLayer);
+
+        for(int i = 0; i < size; i++)
+        {
+            var interactable = _interactionResult[i].GetComponent<InteractableComponent>();
+            if(interactable != null)
+            {
+                interactable.Interact();
+            }
+        }
     }
 }
