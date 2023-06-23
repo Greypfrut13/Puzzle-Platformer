@@ -9,6 +9,13 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private UnityEvent _onDamage;
     [SerializeField] private UnityEvent _onDie;
 
+    private int _maxHealth;
+
+    private void Start() 
+    {
+        _maxHealth = _health;
+    }
+
     public void ApplyDamage(int damageValue)
     {
         _health -= damageValue;
@@ -16,6 +23,15 @@ public class HealthComponent : MonoBehaviour
         if(_health <= 0)
         {
             _onDie?.Invoke();
+        }
+    }
+
+    public void ApplyHeal(int healthValue)
+    {
+        _health += healthValue;
+        if(_health > _maxHealth)
+        {
+            _health = _maxHealth;
         }
     }
 }
