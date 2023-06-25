@@ -13,6 +13,7 @@ public class Hero : MonoBehaviour
     [SerializeField] private LayerMask _interactionLayer;
 
     [SerializeField] private SpawnComponents _footStepParticles;
+    [SerializeField] private SpawnComponents _jumpParticles;
     
     private Collider2D[] _interactionResult = new Collider2D[1];
     private Vector2 _direction;
@@ -75,6 +76,7 @@ public class Hero : MonoBehaviour
 
         if(_isGrounded)
         {
+            SpawnJumpDust();
             yVelocity += _jumpForce;
         }
         else if(_allowDoubleJump)
@@ -126,5 +128,10 @@ public class Hero : MonoBehaviour
     public void SpawnFootDust()
     {
         _footStepParticles.Spawn();
+    }
+
+    public void SpawnJumpDust()
+    {
+        _jumpParticles.Spawn();
     }
 }
