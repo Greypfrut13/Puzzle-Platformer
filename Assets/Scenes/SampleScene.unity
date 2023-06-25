@@ -5621,6 +5621,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3288224730060450435, guid: f71457e2cba0e794ab628baf9fe36491, type: 3}
+      propertyPath: _footStepParticles
+      value: 
+      objectReference: {fileID: 1084109860}
     - target: {fileID: 3288224730060450439, guid: f71457e2cba0e794ab628baf9fe36491, type: 3}
       propertyPath: m_Name
       value: Hero

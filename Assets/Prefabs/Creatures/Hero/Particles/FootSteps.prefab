@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7475534104947173118}
   - component: {fileID: 7475534104947173088}
   - component: {fileID: 7475534104947173089}
+  - component: {fileID: 7194685452226098104}
   m_Layer: 0
   m_Name: FootSteps
   m_TagString: Untagged
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 1
+  _loop: 0
   _sprites:
   - {fileID: 21300000, guid: e89413cd8f094e743b4967472fe7de35, type: 3}
   - {fileID: 21300000, guid: 0af1b189984bb264b91bd5557a90d263, type: 3}
@@ -107,4 +108,29 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 45483db15d74dd947972af9da1f177e1, type: 3}
   _onComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7194685452226098104}
+        m_TargetAssemblyTypeName: DestroyObjectComponent, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7194685452226098104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7475534104947173119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c763b5aa8d4db94c9608baa18552865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 7475534104947173119}

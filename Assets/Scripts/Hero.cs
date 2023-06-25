@@ -11,12 +11,13 @@ public class Hero : MonoBehaviour
     [SerializeField] private LayerCheck _groundCheck;
     [SerializeField] private float _interactionRadius;
     [SerializeField] private LayerMask _interactionLayer;
+
+    [SerializeField] private SpawnComponents _footStepParticles;
     
     private Collider2D[] _interactionResult = new Collider2D[1];
     private Vector2 _direction;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    private SpriteRenderer _sprite;
     private bool _isGrounded;
     private bool _allowDoubleJump;
 
@@ -29,7 +30,6 @@ public class Hero : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update() 
@@ -90,11 +90,11 @@ public class Hero : MonoBehaviour
     {
         if(_direction.x > 0)
         {
-            _sprite.flipX = false;
+            transform.localScale = Vector3.one;
         }
         else if(_direction.x < 0)
         {
-            _sprite.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
@@ -121,5 +121,10 @@ public class Hero : MonoBehaviour
                 interactable.Interact();
             }
         }
+    }
+
+    public void SpawnFootDust()
+    {
+        _footStepParticles.Spawn();
     }
 }

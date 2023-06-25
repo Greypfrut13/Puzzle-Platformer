@@ -10,6 +10,7 @@ public class SpawnComponents : MonoBehaviour
     [ContextMenu("Spawn")]
     public void Spawn()
     {
-        Instantiate(_prefab, _target.position, Quaternion.identity);
+        var instance = Instantiate(_prefab, _target.position, Quaternion.identity);
+        instance.transform.localScale = _target.lossyScale;
     }
 }
